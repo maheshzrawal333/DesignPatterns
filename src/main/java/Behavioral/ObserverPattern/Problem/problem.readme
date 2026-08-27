@@ -1,0 +1,14 @@
+The Problem: The "Are we there yet?" Trap
+
+Imagine you are building a YouTube application. You have a YoutubeChannel class and a
+Subscriber class.
+
+The Beginner Way (Polling):
+The junior developer writes code where the Subscriber uses a while(true) loop to check
+the channel every 5 seconds:
+"Do you have a new video? No."
+"Do you have a new video? No."
+
+Why a Senior rejects this: This is called Polling. It is a disaster. If a channel has 1
+million subscribers, and they all check the server every 5 seconds, you will DDoS
+attack your own server and crash the entire company.

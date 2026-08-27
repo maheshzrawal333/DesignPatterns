@@ -1,0 +1,5 @@
+A user must have a First Name and Last Name, but Email, Phone, and Age are optional.
+
+To handle this, junior developers write "Telescoping Constructors" (making 5 different constructors
+for every combination) or they make one giant constructor and force the caller to pass null for
+things they don't have.

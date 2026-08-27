@@ -1,0 +1,45 @@
+In 1994, four legendary engineers (known as the "Gang of Four") published a book outlining the 23 foundational
+Design Patterns. Every framework you use today (Spring Boot, Hibernate, Java itself) is built entirely out of
+these 23 patterns.
+
+Here they are, divided into their three official categories. I have placed a [Mastered] tag next to the ones
+you have already conquered.
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+1. Creational Patterns
+Goal: How to create objects safely and cleanly without using giant constructors or scattering new keywords everywhere.
+
+Singleton: Ensure a class has only one instance, and provide a global point of access to it.
+Factory Method: Create objects without specifying the exact class to create.
+Builder: Separate the construction of a complex object from its representation.
+Abstract Factory: A factory of factories; groups object factories that have a common theme.
+Prototype: Create a new object by copying (cloning) an existing object rather than building it from scratch.
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+2. Structural Patterns
+Goal: How to assemble small LEGO blocks into larger, more complex structures while keeping them loosely coupled.
+
+Adapter: Make two incompatible interfaces work together (like a European power plug adapter).
+Decorator: Add new behaviors to an object dynamically at runtime without altering its code.
+Facade: Provide a single, simplified interface to a massive, complex subsystem.
+Proxy: Provide a placeholder or wrapper for another object to control access to it (e.g., checking security before
+       allowing the call).
+Bridge: Decouple an abstraction from its implementation so the two can vary independently.
+Composite: Compose objects into tree structures to represent part-whole hierarchies (like a file system with folders
+           inside folders).
+Flyweight: Minimize memory usage by sharing as much data as possible with similar objects.
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+3. Behavioral Patterns
+Goal: How objects communicate, assign responsibilities, and route messages to one another.
+Strategy : Define a family of algorithms, encapsulate each one, and make them interchangeable at runtime.
+Observer : Define a one-to-many dependency so that when one object changes state, all dependents are notified
+           (Pub/Sub).
+State: Allow an object to alter its behavior when its internal state changes (like a Vending Machine).
+Chain of Responsibility: Pass a request along a chain of handlers until one of them handles it.
+Command: Encapsulate a request as an object, allowing you to queue, log, or undo the request.
+Template Method: Define the skeleton of an algorithm in a parent class, but let children override specific steps.
+Iterator: Access the elements of a collection sequentially without exposing its underlying representation.
+Mediator: Reduce chaotic communication between objects by forcing them to talk through a central hub (like an Air
+          Traffic Controller).
+Memento: Capture and restore an object's internal state (an "Undo" button).
+Visitor: Separate an algorithm from the object structure on which it operates.
+Interpreter: Implement a specialized computer language to solve a specific set of problems (rarely used).
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
