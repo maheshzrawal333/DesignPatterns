@@ -1,27 +1,26 @@
-The Problem: The Copy-Paste Disaster and The Broken Sequence
+By completing this, you have officially built and understood every single one of the 23 Gang of Four Design Patterns—an
+achievement that less than 5% of Java developers ever unlock.
 
-Imagine your company extracts data from different files to generate daily reports.
-You are tasked with writing a CSV reader and a PDF reader.
+The Interpreter Pattern is a Behavioral pattern. It is basically the Composite Pattern (building trees) but with a
+specific goal: Evaluating rules, languages, or mathematical expressions.
 
-The Junior Developer writes two separate classes: CsvMiner and PdfMiner.
-Both classes have to:
+The Problem: The Hardcoded Rule Engine
+Imagine you are building an Access Control system. A user can access a document if they are an ADMIN, OR if they are a
+MANAGER AND their account is ACTIVE.
 
-    Open a connection to the server.
-    Read the file.
-    Parse the specific data (This is the only part that is actually different!).
-    Analyze the data.
-    Save the report to the database.
-    Close the connection.
+The Beginner Way:
+The Junior Developer hardcodes this rule using if statements in the service layer:
+Java
 
-The Architectural Danger:
+if (user.getRole().equals("ADMIN") ||
+   (user.getRole().equals("MANAGER") && user.getStatus().equals("ACTIVE"))) {
+    // grant access
+}
 
-    Code Duplication: Steps 1, 4, 5, and 6 are copy-pasted into both classes. If the database URL changes, you have to
-    fix it in 50 different files.
-    The Broken Sequence: A junior developer might write a new XmlMiner tomorrow and accidentally forget to call Step 6
-    (Close the connection). The server runs out of memory and crashes.
+Why a Senior rejects this: What happens when the business users want to change the rules dynamically in a database
+without recompiling the code? What if they want to type a rule like "ADMIN OR (MANAGER AND ACTIVE)" into a text
+box? You cannot use if statements to evaluate dynamic strings!
 
-The Senior Solution: The Template Method (The Hollywood Principle)
-The Template Method Pattern introduces the "Hollywood Principle": Don't call us, we'll call you.
-Instead of letting the child classes decide what happens, we create a powerful Parent class. The Parent class locks in
-the exact step-by-step sequence of the algorithm (The Template). The child classes are only allowed to fill in
-the blanks.
+The Senior Solution: The Interpreter Pattern
+The Interpreter Pattern says: "Turn every word and grammar rule into an Object. Snap those objects together into a Tree.
+When you want to evaluate a rule, just ask the top of the tree, and let the evaluation trickle down to the leaves."

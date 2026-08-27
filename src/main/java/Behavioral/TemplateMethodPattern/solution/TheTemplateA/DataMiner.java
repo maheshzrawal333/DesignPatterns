@@ -1,4 +1,4 @@
-package Behavioral.InterpreterPattern.solution.TheTemplateA;
+package Behavioral.TemplateMethodPattern.solution.TheTemplateA;
 
 public abstract class DataMiner {
 

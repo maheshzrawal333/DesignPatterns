@@ -1,0 +1,27 @@
+You are now in the home stretch. This is the final Creational pattern.
+While Factory and Builder are about how to construct an object from scratch, Prototype is about what to do when building
+from scratch is simply too expensive.
+
+The Problem: The "Expensive Creation" Bottleneck
+Imagine you are building a Strategy Game (like Age of Empires or Starcraft). You need to spawn 1,000 "Orc Grunt"
+enemies on the screen.
+
+The Beginner Way:
+The Junior Developer writes a loop that calls new Orc() 1,000 times.
+Inside the Orc constructor, the code has to:
+
+    1. Load the 3D mesh from the hard drive.
+    2. Load the AI behavior tree from a database.
+    3. Calculate base stats based on the current game difficulty.
+
+If this takes 100 milliseconds per Orc, spawning 1,000 Orcs will freeze the game for 1.5 minutes.
+
+Why a Senior rejects this: You shouldn't do the heavy lifting of reading files and databases 1,000 times if the data
+is exactly the same!
+
+The Senior Solution: The Prototype Pattern (Cloning)
+The Prototype Pattern says: "Build the heavy object exactly ONCE. Then, just use a photocopier to stamp out as many
+clones as you need instantly."
+
+Instead of using the new keyword and running the constructor, we give the object a clone() method. The object looks at
+its own internal memory and creates an exact duplicate of itself in a fraction of a millisecond.

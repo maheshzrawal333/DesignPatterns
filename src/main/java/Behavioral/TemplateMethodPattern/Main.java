@@ -1,8 +1,8 @@
-package Behavioral.InterpreterPattern;
+package Behavioral.TemplateMethodPattern;
 
-import Behavioral.InterpreterPattern.solution.TheConcreteMinersB.CsvMiner;
-import Behavioral.InterpreterPattern.solution.TheConcreteMinersB.PdfMiner;
-import Behavioral.InterpreterPattern.solution.TheTemplateA.DataMiner;
+import Behavioral.TemplateMethodPattern.solution.TheConcreteMinersB.CsvMiner;
+import Behavioral.TemplateMethodPattern.solution.TheConcreteMinersB.PdfMiner;
+import Behavioral.TemplateMethodPattern.solution.TheTemplateA.DataMiner;
 
 public class Main {
     public static void main(String[] args) {

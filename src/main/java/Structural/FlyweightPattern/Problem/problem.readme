@@ -1,0 +1,33 @@
+This is the ultimate Memory Optimization pattern. While most patterns focus on making your code cleaner or more
+flexible, the Flyweight pattern exists for one brutal reason: to prevent your application from crashing with a
+java.lang.OutOfMemoryError.
+
+The Problem: The RAM Explosion
+Imagine you are building a video game like Minecraft, or a mapping application like Google Maps. You need to render a
+massive forest with 1,000,000 trees.
+
+The Beginner Way:
+The Junior Developer creates a simple Tree class.
+Java
+public class Tree {
+    private int x;
+    private int y;
+    private String type;     // "Oak"
+    private String color;    // "Green"
+    private byte[] 3dModel;  // 1 Megabyte of 3D mesh data!
+}
+
+Why a Senior rejects this:
+If you do new Tree() one million times, you are copying that 1 Megabyte 3dModel array one million times. Your game
+will try to consume 1 Terabyte of RAM just for the trees, and the computer will instantly crash.
+
+The Senior Solution: The Flyweight Pattern (Intrinsic vs Extrinsic)
+A Senior Developer looks at that Tree class and realizes there are two completely different types of data inside it:
+
+    1. Intrinsic State (Shared & Heavy): The type, color, and 3dModel. Every single "Oak" tree in the universe shares
+    this exact same 1 Megabyte of data. It never changes.
+    2. Extrinsic State (Unique & Light): The x and y coordinates. Every tree has a different location, but integers
+    only take 4 bytes of RAM.
+
+The Flyweight pattern says: "Rip the heavy, shared data out of the object. Store it in a cache exactly ONCE, and have
+all 1,000,000 objects point to that exact same reference in memory."

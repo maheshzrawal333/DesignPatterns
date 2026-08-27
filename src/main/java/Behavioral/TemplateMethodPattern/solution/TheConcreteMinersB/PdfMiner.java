@@ -1,6 +1,6 @@
-package Behavioral.InterpreterPattern.solution.TheConcreteMinersB;
+package Behavioral.TemplateMethodPattern.solution.TheConcreteMinersB;
 
-import Behavioral.InterpreterPattern.solution.TheTemplateA.DataMiner;
+import Behavioral.TemplateMethodPattern.solution.TheTemplateA.DataMiner;
 
 public class PdfMiner extends DataMiner {
 

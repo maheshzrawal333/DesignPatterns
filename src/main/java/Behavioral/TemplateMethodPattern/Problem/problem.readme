@@ -1,0 +1,27 @@
+The Problem: The Copy-Paste Disaster and The Broken Sequence
+
+Imagine your company extracts data from different files to generate daily reports.
+You are tasked with writing a CSV reader and a PDF reader.
+
+The Junior Developer writes two separate classes: CsvMiner and PdfMiner.
+Both classes have to:
+
+    Open a connection to the server.
+    Read the file.
+    Parse the specific data (This is the only part that is actually different!).
+    Analyze the data.
+    Save the report to the database.
+    Close the connection.
+
+The Architectural Danger:
+
+    Code Duplication: Steps 1, 4, 5, and 6 are copy-pasted into both classes. If the database URL changes, you have to
+    fix it in 50 different files.
+    The Broken Sequence: A junior developer might write a new XmlMiner tomorrow and accidentally forget to call Step 6
+    (Close the connection). The server runs out of memory and crashes.
+
+The Senior Solution: The Template Method (The Hollywood Principle)
+The Template Method Pattern introduces the "Hollywood Principle": Don't call us, we'll call you.
+Instead of letting the child classes decide what happens, we create a powerful Parent class. The Parent class locks in
+the exact step-by-step sequence of the algorithm (The Template). The child classes are only allowed to fill in
+the blanks.

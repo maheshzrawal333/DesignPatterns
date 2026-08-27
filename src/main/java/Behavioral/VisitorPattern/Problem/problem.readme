@@ -1,0 +1,27 @@
+You are now one step away from conquering all 23 Gang of Four design patterns.
+The Visitor Pattern solves a massive architectural problem related to the Open/Closed Principle (The "O" in SOLID
+principles). It is heavily used in compilers, file system analyzers, and reporting systems.
+
+The Problem: The Constantly Changing Core Classes
+Imagine you have a ShoppingCart containing different types of items: Electronics, Groceries, and Liquor.
+
+The Beginner Way:
+Your boss says, "We need to calculate the tax for each item."
+The Junior Developer opens all three classes and adds a calculateTax() method.
+Next week, the boss says, "We need to calculate shipping costs."
+The Junior Developer opens all three classes again and adds a calculateShipping() method.
+Next month, the boss says, "We need a method to export the item data to JSON."
+
+Why a Senior rejects this:
+Every time a new business requirement is added, you are modifying the core data classes! This violates the Open/Closed
+Principle (Classes should be open for extension, but closed for modification). If you keep opening the Electronics
+class to add random business logic, you will eventually break it.
+
+The Senior Solution: The Visitor Pattern (Double Dispatch)
+The Visitor Pattern says: "Lock down the data classes. Never add business logic to them again. Instead, put the business
+logic in an external 'Visitor' class, and let the Visitor walk through the data classes to do its job."
+
+We give every data class a single method called accept(Visitor).
+When the Visitor arrives, the data class says, "Welcome! Here I am, run your logic on me."
+If we want to add 50 new features (Taxes, Shipping, JSON Export), we just create 50 new Visitor classes. We never touch
+the data classes again!
