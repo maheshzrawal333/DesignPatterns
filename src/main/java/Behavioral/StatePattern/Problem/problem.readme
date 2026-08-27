@@ -1,0 +1,18 @@
+The Problem: The "If/Else" State Machine
+
+Imagine you are building a Document Publishing System (like WordPress). An Article can be in three states: DRAFT,
+REVIEW, or PUBLISHED.
+
+The Beginner Way:
+The junior developer uses an enum and writes massive switch statements inside every single method of the Document class.
+
+Why a Senior rejects this: What happens when the boss adds a new state tomorrow called "ARCHIVED"? You have to open the
+Document class, find every single method, and add another else if to all of them. The file becomes 2,000 lines long and
+incredibly fragile.
+The Senior Solution: The State Pattern
+
+The State Pattern says: "Take the behaviors of each state and extract them into their own separate classes!"
+
+Instead of the Document class tracking a String and using if statements, it holds a State object. When the user clicks
+"Publish", the Document just blindly hands the command to the current State object. When the state changes, the object
+swaps itself out for a new one!

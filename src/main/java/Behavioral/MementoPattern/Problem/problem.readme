@@ -1,0 +1,22 @@
+The Problem: The Broken Encapsulation
+
+Imagine you are building a Text Editor (like Notepad). You want to save the state of the document so the user can
+hit Ctrl+Z.
+
+The Beginner Way:
+The Junior Developer creates an external HistoryManager class that reaches directly into the TextEditor to grab its
+variables (the text, the cursor position, the font size) and saves them in a List.
+
+Why a Senior rejects this:
+This violates Encapsulation (Information Hiding). If the HistoryManager reaches inside the TextEditor to grab its
+private variables, it means those variables are no longer private! The TextEditor has exposed its internal guts
+to the outside world. If you change how TextEditor stores text internally, HistoryManager completely breaks.
+The Senior Solution: The Memento (The Time Capsule)
+
+The Memento Pattern says: "Only the object itself is allowed to take a snapshot of its own internal state."
+
+The TextEditor builds a tiny, sealed Time Capsule (the Memento). It puts its private data inside the capsule, locks
+it, and hands the locked capsule to the HistoryManager.
+The HistoryManager can hold the capsule, but it is not allowed to open it or look inside. If the user hits "Undo,"
+the HistoryManager just hands the locked capsule back to the TextEditor, who is the only one with the key to open
+it and restore its own state!

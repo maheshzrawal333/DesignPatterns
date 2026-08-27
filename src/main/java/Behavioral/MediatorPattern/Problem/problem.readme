@@ -1,0 +1,23 @@
+The Problem: The "Spaghetti Code" Web
+
+Imagine you are building a smart airport system. You have four classes:
+    1. Airplane
+    2. Runway
+    3. Helicopter
+    4. CargoTruck
+
+The Beginner Way:
+If an Airplane is landing, it has to tell the Runway it is coming. But it also has to tell the Helicopter to stay away,
+and it has to tell the CargoTruck to wait.
+Suddenly, every single object has to hold a reference to every other object in the system.
+
+If you draw lines between all these objects, it looks like a spiderweb. This is called Tightly Coupled Spaghetti Code.
+If you delete the Helicopter class, the Airplane class breaks because it had a hardcoded reference to it!
+The Senior Solution: The Mediator (The Air Traffic Controller)
+
+The Mediator Pattern says: "Objects are no longer allowed to talk to each other directly."
+
+Instead, we create a central hub—a Mediator. (Think of the Air Traffic Control tower).
+If the Airplane wants to land, it doesn't talk to the Helicopter. The Airplane sends a message to the Tower: "I am
+landing." The Tower is the only object that knows who everyone else is, and the Tower broadcasts the message to the
+Helicopter and the Cargo Truck.
