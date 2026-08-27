@@ -1,0 +1,38 @@
+This Structural pattern solves one of the most annoying problems in all of software engineering: The Tree Structure.
+The Problem: Treating Groups differently than Singles
+
+Imagine you are building a File System for an operating system (like Windows or Mac).
+You have two concepts: File and Folder.
+
+    * A File has a size (e.g., 5MB).
+    * A Folder contains a list of Files, and a list of other Folders. To get the size of a Folder, you have to add up
+    the sizes of everything inside it.
+
+The Beginner Way:
+The Junior Developer writes code that uses if statements to constantly check what type of object they are dealing with:
+Java
+
+// Trying to calculate the total size of a drive
+for (Object item : hardDrive) {
+    if (item instanceof File) {
+        totalSize += ((File) item).getSize();
+    } else if (item instanceof Folder) {
+        // Now I have to write a complex recursive loop just for folders!
+        totalSize += calculateFolderSize((Folder) item);
+    }
+}
+
+Why a Senior rejects this: Every time the client wants to do anything (copy, delete, check size), they have to write
+massive instanceof checks. The code becomes a nightmare to maintain.
+
+The Senior Solution: The Composite Pattern (The Tree)
+The Composite Pattern says: "Treat individual objects and groups of objects in exactly the same way."
+
+We create one unified Interface called FileSystemComponent.
+Both File and Folder implement it.
+When the client calls getSize() on a File, it just returns its size.
+When the client calls getSize() on a Folder, the Folder automatically loops through everything inside itself and
+calls getSize() on them!
+
+The client can just blindly call getSize() on any object, without caring if it is a single file or a folder
+containing 10,000 files!

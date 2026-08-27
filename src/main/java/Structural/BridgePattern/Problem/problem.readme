@@ -1,0 +1,32 @@
+The Bridge Pattern.
+
+Since you mentioned early on that your architectural philosophy is "Composition over Inheritance" (Pillar 4: Loose
+Coupling), this pattern is going to feel incredibly satisfying.
+
+The Bridge Pattern is the ultimate weapon against the "Cartesian Product Subclass Explosion."
+The Problem: The Orthogonal Dimensions
+
+Imagine you are building an Enterprise Notification System.
+You have two types of Notifications (The Abstraction): Standard and Urgent.
+You have two delivery methods (The Implementation): SMS and Email.
+
+The Beginner Way:
+The Junior Developer uses Inheritance (extends) for everything. To cover all combinations, they create:
+
+    1. StandardSmsNotification
+    2. UrgentSmsNotification
+    3. StandardEmailNotification
+    4. UrgentEmailNotification
+
+Why a Senior rejects this:
+This is mathematically disastrous. If the boss says, "Add a 'Marketing' notification type, and add 'WhatsApp' as a
+delivery method," you don't just add two classes. You have to multiply!
+3 Types × 3 Methods = 9 separate classes.
+Add a 4th of each, and you have 16 classes. Your architecture collapses under its own weight.
+The Senior Solution: The Bridge Pattern
+
+The Bridge Pattern says: "Stop tying the 'What' (Abstraction) to the 'How' (Implementation) using inheritance.
+Separate them into two distinct hierarchies, and put a Bridge (Composition) between them."
+
+Instead of creating 16 classes, we create just 4 classes and link them together at runtime.
+Adding a new delivery method doesn't require changing any of the notification types!

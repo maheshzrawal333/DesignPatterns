@@ -1,0 +1,32 @@
+This is a Behavioral pattern that you actually use every single time you write Java, but today you are going to
+understand exactly how the engine works underneath.
+The Problem: Exposing Your Internal Guts
+
+Imagine you are building a Library application. You store your Book objects in a standard Java Array (Book[]).
+The Junior Developer wants to print all the books on the UI, so they write this code in the WebController:
+Java
+
+// The Web Controller has to know exactly how the Library stores data!
+Library library = new Library();
+Book[] allBooks = library.getBooksArray();
+
+for (int i = 0; i < allBooks.length; i++) {
+    System.out.println(allBooks[i].getTitle());
+}
+
+The Architectural Danger:
+What happens if, six months later, the Senior Developer realizes an Array is too slow, and changes the Library to use a
+LinkedList, a TreeSet, or a HashMap?
+Because the UI used [i] and .length, the UI completely breaks. The Web Controller is tightly coupled to the specific
+data structure of the database!
+
+The Senior Solution: The Iterator
+The Iterator Pattern says: "Never let the outside world know how you store your data."
+
+Instead of handing the UI an Array or a List, the Library hands the UI a tiny robotic object called an Iterator.
+The Iterator only has two buttons:
+
+   1.hasNext(): "Are there any books left?"
+   2.next(): "Give me the next book."
+
+The UI presses those two buttons. It has absolutely no idea if it is traversing an Array, a Tree, or a Graph. If the database changes its internal storage tomorrow, the UI code does not change by a single line.
