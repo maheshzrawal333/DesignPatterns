@@ -1,0 +1,14 @@
+If the Facade is the "Front Desk" that organizes chaos, the Proxy is the "Bouncer at a Nightclub."
+The Problem: Dangerous or Expensive Access
+
+Imagine you have a Database class that has a dropTable() method.
+If you let the Web Controller talk directly to the Database class, a bug or a malicious user could trigger that method
+and delete your entire company's data.
+
+Or, imagine a VideoDownloader class. Downloading a 4K video takes 10 seconds and costs server bandwidth. If 1,000 users
+request the same video, you don't want to download it from scratch 1,000 times!
+
+The Solution: You never let the client talk to the real object. Instead, you build a Proxy.
+The Proxy implements the exact same interface as the real object, so the client has no idea it is talking to a fake.
+When the client calls a method, the Proxy intercepts it, checks security permissions (or checks the cache), and only
+if everything is perfect, it passes the request to the real object.

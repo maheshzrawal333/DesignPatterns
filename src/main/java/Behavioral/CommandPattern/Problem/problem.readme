@@ -1,0 +1,13 @@
+The Problem: The "Frozen UI" and the missing "Undo" Button
+
+Imagine you are building a Desktop UI or a Mobile App. You have a "Save to Database" button.
+If you put the database connection code directly inside the button's onClick() method, the UI will freeze for 5 seconds
+while the database connects. The user will click the button 10 times in frustration, crashing the app.
+Furthermore, what if the user wants to hit Ctrl+Z to "Undo" the save? A button click is just an event; you can't "undo"
+an event.
+
+The Solution: The Command Pattern.
+We take the "Action" (saving to the database) and we wrap it inside a physical object (a Command Object).
+Now, when the user clicks the button, the button does not do the work. It simply creates a Command object and throws it
+into a background Queue. A background thread processes the queue so the UI never freezes. And because the action is now
+an object, we can save it in an "Undo History" list!

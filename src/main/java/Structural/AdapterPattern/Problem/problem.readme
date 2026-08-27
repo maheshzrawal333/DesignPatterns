@@ -1,0 +1,10 @@
+The Problem: You have two pieces of code that refuse to talk to each other.
+Imagine your company has a 10-year-old application that expects data in XML format. You just bought a subscription to a
+brand new 3rd-party API (like AWS or Stripe), but they only send data in JSON format.
+
+    You cannot change your old app (it's too big and risky).
+
+    You cannot change the 3rd-party API (you don't own their code).
+
+The Solution: Just like traveling to Europe with a US laptop charger, you don't rewire the wall outlet, and you don't
+rebuild your laptop. You build a plastic Adapter to put in the middle.

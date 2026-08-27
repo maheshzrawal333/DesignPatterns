@@ -1,0 +1,19 @@
+The Problem: You have a massive, highly complex system made of dozens of different classes.
+Imagine a user clicks "Buy Now" on Amazon. Behind the scenes, the server has to:
+
+    Check the Inventory Database.
+
+    Charge the Credit Card via the Payment Gateway.
+
+    Generate a Shipping Label.
+
+    Send an Email Receipt.
+
+If you put all of this logic directly into your Web Controller or your UI button, your code becomes incredibly fragile.
+The UI developer now has to understand exactly how 4 different backend systems work and call them in the exact perfect
+order.
+
+The Solution: You build a Facade (a French word meaning the "front face" of a building).
+Think of it like the Front Desk at a hotel. You don't go to the basement to turn on the boiler, and you don't go to the
+kitchen to cook your breakfast. You just call the Front Desk and say, "Room service, please," and they coordinate the
+chaos for you.
