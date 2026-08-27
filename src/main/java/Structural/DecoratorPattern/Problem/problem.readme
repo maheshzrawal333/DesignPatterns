@@ -1,0 +1,9 @@
+Imagine you are building a secure enterprise application. You write a CloudStorage class that saves user data to the cloud.
+Six months later, the boss says: "We need to encrypt the data before saving it."
+The junior developer uses extends to create: class EncryptedCloudStorage extends CloudStorage.
+
+A month later, the boss says: "We also need to compress the data to save space."
+The junior developer creates: class CompressedCloudStorage extends CloudStorage.
+
+Then the boss says: "Some customers want Encryption AND Compression!"
+The junior developer creates: class EncryptedAndCompressedCloudStorage extends CloudStorage.
